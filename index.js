@@ -30,6 +30,7 @@ for(const file of commandFiles)
 client.on("ready", () => {
     // Get all ids of the servers
     const guild_ids = client.guilds.cache.map(guild => guild.id);
+    console.log(guild_ids);
 
 
     const rest = new REST({version: '9'}).setToken(process.env.TOKEN);
@@ -58,6 +59,13 @@ client.on("interactionCreate", async interaction => {
         await interaction.reply({content: "There was an error executing this command"});
     }
 });
+client.on("message", (message)=>
+{
+   if(message.content === "Hello")
+   {
+       message.reply("Hi There! Welcome to the Community");
+   }
+})
 
 client.login(process.env.TOKEN);
 
